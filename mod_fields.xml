@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+    <name>Article Custom Fields Display</name>
+    <author>Your Name</author>
+    <version>1.0.0</version>
+    <description>Displays selected custom fields from current article</description>
+    <files>
+        <filename module="mod_fields">mod_fields.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="category_id"
+                    type="category"
+                    extension="com_content"
+                    label="Category"
+                    description="Select categories to display fields from"
+                    multiple="true"
+                />
+                <field
+                    name="custom_fields"
+                    type="subform"
+                    multiple="true"
+                    label="Custom Fields to Display"
+                    description="Select which custom fields to show"
+                >
+                    <form>
+                        <field
+                            name="field_name"
+                            type="text"
+                            label="Field Name"
+                            description="Enter the custom field name exactly as it appears in Joomla"
+                        />
+                        <field
+                            name="label"
+                            type="text"
+                            label="Display Label"
+                            description="Label to show before the field value (leave empty for no label)"
+                        />
+                    </form>
+                </field>
+                <field
+                    name="wrapper_class"
+                    type="text"
+                    default="custom-fields-wrapper"
+                    label="Wrapper Class"
+                    description="CSS class for the wrapper div"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
