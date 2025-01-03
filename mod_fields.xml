@@ -20,26 +20,14 @@
                 />
                 <field
                     name="custom_fields"
-                    type="subform"
+                    type="sql"
                     multiple="true"
-                    label="Custom Fields to Display"
-                    description="Select which custom fields to show"
-                >
-                    <form>
-                        <field
-                            name="field_name"
-                            type="text"
-                            label="Field Name"
-                            description="Enter the custom field name exactly as it appears in Joomla"
-                        />
-                        <field
-                            name="label"
-                            type="text"
-                            label="Display Label"
-                            description="Label to show before the field value (leave empty for no label)"
-                        />
-                    </form>
-                </field>
+                    label="Select Custom Fields"
+                    description="Choose which custom fields to display"
+                    query="SELECT id AS value, CONCAT(title, ' (', name, ')') AS text FROM #__fields WHERE context = 'com_content.article' AND state = 1 ORDER BY title"
+                    key_field="value"
+                    value_field="text"
+                />
                 <field
                     name="wrapper_class"
                     type="text"
@@ -47,7 +35,19 @@
                     label="Wrapper Class"
                     description="CSS class for the wrapper div"
                 />
+                <field
+                    name="show_labels"
+                    type="radio"
+                    default="1"
+                    label="Show Field Labels"
+                    description="Show or hide the field labels"
+                    class="btn-group btn-group-yesno"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
             </fieldset>
         </fields>
     </config>
 </extension>
+
